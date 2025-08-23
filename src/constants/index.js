@@ -69,7 +69,7 @@ export const myProjects = [
             border: "0.2px solid #1F2B40",
             boxShadow: "0px 0px 60px 0px #2E3A594D",
         },
-        spotlight: "/assets/spotlight-platana.png",
+
         tags: [
             { id: 1, name: "Angular", path: "/assets/angular.svg" },
             { id: 2, name: "Spring Boot", path: "/assets/spring.webp" },
@@ -94,7 +94,7 @@ export const myProjects = [
         tags: [
             { id: 1, name: "React.js", path: "/assets/react.svg" },
             { id: 2, name: "TailwindCSS", path: "/assets/tailwindcss.png" },
-        
+
         ],
     },
     {
@@ -110,10 +110,9 @@ export const myProjects = [
             border: "0.2px solid #252262",
             boxShadow: "0px 0px 60px 0px #635BFF4D",
         },
-        spotlight: "/assets/spotlight-event.png",
         tags: [
             { id: 1, name: "Next.js", path: "/assets/nextjs.svg" },
-    
+
             { id: 2, name: "Clerk", path: "/assets/clerk.png" },
             { id: 3, name: "TailwindCSS", path: "/assets/tailwindcss.png" },
             { id: 4, name: "React.js", path: "/assets/react.svg" }, ,
