@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -22,6 +23,12 @@ export default {
           600: '#AFB0B6',
           500: '#62646C',
         },
+        light: {
+          primary: '#f8fafc',
+          secondary: '#e2e8f0',
+          accent: '#cbd5e1',
+          text: '#1e293b',
+        }
       },
       backgroundImage: {
         terminal: "url('/assets/terminal.png')",

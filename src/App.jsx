@@ -9,20 +9,31 @@ import Footer from "./components/Footer.jsx";
 import Experiences from "./sections/Experiences.jsx";
 import StatsSection from "./components/StatsSection.jsx";
 import FloatingScrollTop from "./components/FloatingScrollTop.jsx";
+import ThemeLanguageToggle from "./components/ThemeLanguageToggle.jsx";
+import { ThemeProvider } from "./contexts/ThemeContext.jsx";
+import { LanguageProvider } from "./contexts/LanguageContext.jsx";
+
 const App = () => {
     return (
-        <main className="w-full mx-auto">
-            <Navbar />
-            <Hero />
-            <About />
-            <StatsSection />
-            <Projects />
-            <Experiences />
-            <Clients />
-            <Contact />
-            <Footer />
-            <FloatingScrollTop />
-        </main>
+        <ThemeProvider>
+            <LanguageProvider>
+                <main className="w-full mx-auto transition-colors duration-500 
+                               bg-black-100 dark:bg-black-100 
+                               light:bg-gray-50 light:text-gray-900">
+                    <ThemeLanguageToggle />
+                    <Navbar />
+                    <Hero />
+                    <About />
+                    <StatsSection />
+                    <Projects />
+                    <Experiences />
+                    <Clients />
+                    <Contact />
+                    <Footer />
+                    <FloatingScrollTop />
+                </main>
+            </LanguageProvider>
+        </ThemeProvider>
     );
 };
 

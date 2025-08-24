@@ -10,14 +10,32 @@ import CanvasLoader from '../components/Loading.jsx';
 import DemoComputer from '../components/DemoComputer.jsx';
 import DemoComputerCustom from "../components/DemoComputerCustom.jsx";
 import { useInView } from '../hooks/useAnimations.js';
+import { useTranslation } from '../contexts/LanguageContext.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projectCount = myProjects.length;
 
 const Projects = () => {
+    const { t } = useTranslation();
     //custom scale 10 , norma 2
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+
+    // Function to get translated project data
+    const getTranslatedProject = (projectIndex) => {
+        const project = myProjects[projectIndex];
+        const projectKeys = ['platana', 'codeveda', 'eventManagement'];
+        const translationKey = projectKeys[projectIndex];
+
+        return {
+            ...project,
+            title: t(`projects.${translationKey}.title`),
+            desc: t(`projects.${translationKey}.desc`),
+            subdesc: t(`projects.${translationKey}.subdesc`)
+        };
+    };
+
+    const currentProject = getTranslatedProject(selectedProjectIndex);
 
     const handleNavigation = (direction) => {
         setSelectedProjectIndex((prevIndex) => {
@@ -33,11 +51,9 @@ const Projects = () => {
         gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
     }, [selectedProjectIndex]);
 
-    const currentProject = myProjects[selectedProjectIndex];
-
     return (
         <section className="c-space my-20">
-            <p className="head-text">My Selected Work</p>
+            <p className="head-text">{t('projects.selectedWork')}</p>
 
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
                 <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
@@ -70,7 +86,7 @@ const Projects = () => {
                             href={currentProject.href}
                             target="_blank"
                             rel="noreferrer">
-                            <p>Check Live Site</p>
+                            <p>{t('projects.livePreview')}</p>
                             <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
                         </a>
                     </div>

@@ -1,8 +1,10 @@
 import { useInView, useCountUp } from '../hooks/useAnimations.js';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { useTranslation } from '../contexts/LanguageContext.jsx';
 
 const StatsSection = () => {
+    const { t } = useTranslation();
     const [statsRef, statsInView] = useInView(0.3);
 
     const projectsCompleted = useCountUp(15, 2500, statsInView);
@@ -37,28 +39,28 @@ const StatsSection = () => {
     const stats = [
         {
             number: projectsCompleted,
-            label: "Projects Completed",
+            label: t('stats.projectsCompleted'),
             suffix: "+",
             icon: "🚀",
             color: "from-blue-500 to-purple-600"
         },
         {
             number: yearsExperience,
-            label: "Years Experience",
+            label: t('stats.yearsExperience'),
             suffix: "+",
             icon: "⭐",
             color: "from-green-500 to-teal-600"
         },
         {
             number: happyClients,
-            label: "Happy Clients",
+            label: t('stats.happyClients'),
             suffix: "+",
             icon: "😊",
             color: "from-orange-500 to-red-600"
         },
         {
             number: coffeeConsumed,
-            label: "Cups of Coffee",
+            label: t('stats.cupsOfCoffee'),
             suffix: "+",
             icon: "☕",
             color: "from-yellow-500 to-orange-600"

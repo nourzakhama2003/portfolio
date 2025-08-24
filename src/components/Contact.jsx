@@ -2,8 +2,10 @@ import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 import useAlert from '../hooks/useAlert.js';
 import Alert from '../components/Alert.jsx';
+import { useTranslation } from '../contexts/LanguageContext.jsx';
 
 const Contact = () => {
+    const { t } = useTranslation();
     const formRef = useRef();
     const { alert, showAlert, hideAlert } = useAlert();
     const [loading, setLoading] = useState(false);
@@ -41,7 +43,7 @@ const Contact = () => {
             setLoading(false);
             showAlert({
                 show: true,
-                text: 'Please fill in all fields',
+                text: t('contact.fillAllFields'),
                 type: 'danger',
             });
             return;
@@ -53,7 +55,7 @@ const Contact = () => {
             setLoading(false);
             showAlert({
                 show: true,
-                text: 'Please enter a valid email address',
+                text: t('contact.validEmail'),
                 type: 'danger',
             });
             return;
@@ -83,7 +85,7 @@ const Contact = () => {
                 console.log('Email sent successfully:', result);
                 showAlert({
                     show: true,
-                    text: 'Thank you for your message 😃',
+                    text: t('contact.messageSent'),
                     type: 'success',
                 });
 
@@ -96,17 +98,17 @@ const Contact = () => {
                 setLoading(false);
                 console.error('EmailJS Error:', error);
 
-                let errorMessage = "EmailJS failed. Click 'Send via Email' button below to use fallback method.";
+                let errorMessage = t('contact.messageError');
 
                 // Provide specific error messages based on error type
                 if (error.status === 412) {
-                    errorMessage = "Email service authentication expired. Please use the fallback email button below.";
+                    errorMessage = t('contact.authError');
                 } else if (error.status === 400) {
-                    errorMessage = "Invalid email configuration. Please use the fallback email button below.";
+                    errorMessage = t('contact.configError');
                 } else if (error.status === 403) {
-                    errorMessage = "Email service access denied. Please use the fallback email button below.";
+                    errorMessage = t('contact.accessError');
                 } else if (error.text && error.text.includes('Invalid grant')) {
-                    errorMessage = "Gmail connection expired. Please use the fallback email button below.";
+                    errorMessage = t('contact.connectionError');
                 }
 
                 showAlert({
@@ -139,7 +141,7 @@ const Contact = () => {
 
                     <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
                         <label className="space-y-3">
-                            <span className="field-label">Full Name</span>
+                            <span className="field-label">{t('contact.name')}</span>
                             <input
                                 type="text"
                                 name="name"
@@ -147,12 +149,12 @@ const Contact = () => {
                                 onChange={handleChange}
                                 required
                                 className="field-input"
-                                placeholder="ex., John Doe"
+                                placeholder={t('contact.namePlaceholder')}
                             />
                         </label>
 
                         <label className="space-y-3">
-                            <span className="field-label">Email address</span>
+                            <span className="field-label">{t('contact.email')}</span>
                             <input
                                 type="email"
                                 name="email"
@@ -165,7 +167,7 @@ const Contact = () => {
                         </label>
 
                         <label className="space-y-3">
-                            <span className="field-label">Your message</span>
+                            <span className="field-label">{t('contact.message')}</span>
                             <textarea
                                 name="message"
                                 value={form.message}
@@ -173,12 +175,12 @@ const Contact = () => {
                                 required
                                 rows={5}
                                 className="field-input"
-                                placeholder="Share your thoughts or inquiries..."
+                                placeholder={t('contact.messagePlaceholder')}
                             />
                         </label>
 
                         <button className="field-btn" type="submit" disabled={loading}>
-                            {loading ? 'Sending...' : 'Send Message'}
+                            {loading ? t('contact.sending') : t('contact.sendMessage')}
 
                             <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
                         </button>
@@ -188,16 +190,16 @@ const Contact = () => {
                             onClick={handleFallbackSubmit}
                             className="field-btn mt-3 bg-blue-600 hover:bg-blue-700 border-2 border-blue-400"
                             disabled={loading || !form.name.trim() || !form.email.trim() || !form.message.trim()}
-                            title="Opens your default email client with pre-filled message"
+                            title={t('contact.emailClientTitle')}
                         >
-                            📧 Send via Email Client (Backup Method)
+                            📧 {t('contact.sendViaEmail')}
                             <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
                         </button>
                     </form>
 
                     <div className="mt-4 text-center">
                         <p className="text-sm text-white-500">
-                            💡 If the main form doesn't work, use the backup email button above
+                            💡 {t('contact.backupInfo')}
                         </p>
                     </div>
                 </div>

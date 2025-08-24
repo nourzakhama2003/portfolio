@@ -16,7 +16,10 @@ import LaptopHacker from "../components/LaptopHacker.jsx";
 import Button from "../components/Button.jsx";
 import GamingRoom from "../components/GamingRoom.jsx";
 import { useCountUp, useInView } from "../hooks/useAnimations.js";
+import { useTranslation } from "../contexts/LanguageContext.jsx";
+
 const Hero = () => {
+    const { t } = useTranslation();
     const isSmall = useMediaQuery({ maxWidth: 440 });
     const isMobile = useMediaQuery({ maxWidth: 768 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
@@ -51,24 +54,24 @@ const Hero = () => {
             {/* Enhanced Hero Content */}
             <div className="w-full mx-auto flex flex-col sm:mt-36 mt-16 c-space gap-3 z-10 relative">
                 <p className="hero-title text-xl sm:text-2xl font-medium text-white text-center font-generalsans">
-                    Hi, I'm Nour! Welcome to my portfolio!
+                    {t('hero.greeting')}
                     <span className="waving-hand"> 👋</span>
                 </p>
-                <p className="hero-subtitle hero_tag text-center">Building Products & Brands</p>
+                <p className="hero-subtitle hero_tag text-center">{t('hero.tagline')}</p>
 
                 {/* Stats Section with Counter Animation */}
                 <div ref={statsRef} className="hero-stats flex justify-center items-center gap-4 sm:gap-8 mt-8 flex-wrap">
                     <div className="stat-card bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
                         <div className="text-2xl sm:text-3xl font-bold text-blue-400">{projectsCount}+</div>
-                        <div className="text-sm text-white/80 font-medium">Projects Completed</div>
+                        <div className="text-sm text-white/80 font-medium">{t('hero.projectsCompleted')}</div>
                     </div>
                     <div className="stat-card bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
                         <div className="text-2xl sm:text-3xl font-bold text-green-400">{experienceYears}+</div>
-                        <div className="text-sm text-white/80 font-medium">Years Experience</div>
+                        <div className="text-sm text-white/80 font-medium">{t('hero.yearsExperience')}</div>
                     </div>
                     <div className="stat-card bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
                         <div className="text-2xl sm:text-3xl font-bold text-orange-400">{clientsCount}+</div>
-                        <div className="text-sm text-white/80 font-medium">Happy Clients</div>
+                        <div className="text-sm text-white/80 font-medium">{t('hero.happyClients')}</div>
                     </div>
                 </div>
 
@@ -76,7 +79,7 @@ const Hero = () => {
                 <div className="mt-8 flex justify-center">
                     <a href="#about" className="group">
                         <Button
-                            name="Discover My Work"
+                            name={t('hero.discoverWork')}
                             isBeam
                             containerClass="w-fit px-8 py-3 group-hover:scale-105 transition-transform duration-300"
                         />
@@ -123,7 +126,7 @@ const Hero = () => {
 
             <div className="absolute bottom-0 left-0 right-0 w-full z-10 c-space">
                 <a href="#about" className="w-fit">
-                    <Button name="Let's work together" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
+                    <Button name={t('hero.workTogether')} isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
                 </a>
             </div>
         </section>

@@ -1,12 +1,29 @@
 import { clientReviews } from '../constants/index.js';
+import { useTranslation } from '../contexts/LanguageContext.jsx';
 
 const Clients = () => {
+    const { t } = useTranslation();
+
+    // Function to get translated client reviews data
+    const getTranslatedClientReviews = () => {
+        const clientReviewKeys = ['emilyJohnson', 'markRogers', 'johnDohsas', 'etherSmith'];
+
+        return clientReviews.map((review, index) => ({
+            ...review,
+            name: t(`clientReviews.${clientReviewKeys[index]}.name`),
+            position: t(`clientReviews.${clientReviewKeys[index]}.position`),
+            review: t(`clientReviews.${clientReviewKeys[index]}.review`)
+        }));
+    };
+
+    const translatedClientReviews = getTranslatedClientReviews();
+
     return (
         <section className="c-space my-20">
-            <h3 className="head-text">Hear from My Clients</h3>
+            <h3 className="head-text">{t('clients.title')}</h3>
 
             <div className="client-container">
-                {clientReviews.map((item) => (
+                {translatedClientReviews.map((item) => (
                     <div key={`review-${item.id}`} className="client-review">
                         <div>
                             <p className="text-white-800 font-light">{item.review}</p>
