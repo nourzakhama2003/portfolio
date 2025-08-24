@@ -1,9 +1,9 @@
 import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 import CanvasLoader from "../components/Loading.jsx";
-// import HackerRoom from "../components/HackerRoom.jsx";
-// import { Leva, useControls } from "leva";
 import { useMediaQuery } from 'react-responsive';
 import { calculateSizes } from '../constants/index.js';
 import Target from "../components/Target.jsx";
@@ -15,60 +15,110 @@ import HeroCamera from "../components/HeroCamera.jsx";
 import LaptopHacker from "../components/LaptopHacker.jsx";
 import Button from "../components/Button.jsx";
 import GamingRoom from "../components/GamingRoom.jsx";
+import { useCountUp, useInView } from "../hooks/useAnimations.js";
 const Hero = () => {
     const isSmall = useMediaQuery({ maxWidth: 440 });
     const isMobile = useMediaQuery({ maxWidth: 768 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
+    const [statsRef, statsInView] = useInView(0.3);
+    const projectsCount = useCountUp(15, 2000, statsInView);
+    const experienceYears = useCountUp(3, 2000, statsInView);
+    const clientsCount = useCountUp(25, 2000, statsInView);
 
     const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
+    // GSAP animations
+    useGSAP(() => {
+        gsap.fromTo('.hero-title',
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }
+        );
+
+        gsap.fromTo('.hero-subtitle',
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power3.out" }
+        );
+
+        gsap.fromTo('.hero-stats',
+            { opacity: 0, scale: 0.8 },
+            { opacity: 1, scale: 1, duration: 0.8, delay: 0.6, ease: "back.out(1.7)" }
+        );
+    }, []);
+
     return (
-        <section className="min-h-screen w-full flex flex-col relative border-2 border-blue-500">
-            <div className="w-full mx-auto flex flex-col sm:mt36 mt-20 c-space gap-3">
-                <p className=" text-xl font-medium text-white text-center font-generalsans">
+        <section className="min-h-screen w-full flex flex-col relative" id="home">
+            {/* Enhanced Hero Content */}
+            <div className="w-full mx-auto flex flex-col sm:mt-36 mt-16 c-space gap-3 z-10 relative">
+                <p className="hero-title text-xl sm:text-2xl font-medium text-white text-center font-generalsans">
                     Hi, I'm Nour! Welcome to my portfolio!
                     <span className="waving-hand"> 👋</span>
                 </p>
-                <p className="hero_tag ">Building Products & Brands</p>
+                <p className="hero-subtitle hero_tag text-center">Building Products & Brands</p>
+
+                {/* Stats Section with Counter Animation */}
+                <div ref={statsRef} className="hero-stats flex justify-center items-center gap-4 sm:gap-8 mt-8 flex-wrap">
+                    <div className="stat-card bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
+                        <div className="text-2xl sm:text-3xl font-bold text-blue-400">{projectsCount}+</div>
+                        <div className="text-sm text-white/80 font-medium">Projects Completed</div>
+                    </div>
+                    <div className="stat-card bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
+                        <div className="text-2xl sm:text-3xl font-bold text-green-400">{experienceYears}+</div>
+                        <div className="text-sm text-white/80 font-medium">Years Experience</div>
+                    </div>
+                    <div className="stat-card bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 text-center border border-white/20 hover:bg-white/15 transition-all duration-300">
+                        <div className="text-2xl sm:text-3xl font-bold text-orange-400">{clientsCount}+</div>
+                        <div className="text-sm text-white/80 font-medium">Happy Clients</div>
+                    </div>
+                </div>
+
+                {/* Enhanced CTA Button */}
+                <div className="mt-8 flex justify-center">
+                    <a href="#about" className="group">
+                        <Button
+                            name="Discover My Work"
+                            isBeam
+                            containerClass="w-fit px-8 py-3 group-hover:scale-105 transition-transform duration-300"
+                        />
+                    </a>
+                </div>
             </div>
 
+            {/* 3D Scene with improved mobile sizing */}
             <div className="w-full h-full absolute inset-0">
-            {/*<Leva />*/}
-            <Canvas className="w-full h-full">
-                <Suspense fallback={<CanvasLoader />}>
-                    <PerspectiveCamera makeDefault position={[0, 0, 15]} />
+                <Canvas className="w-full h-full">
+                    <Suspense fallback={<CanvasLoader />}>
+                        <PerspectiveCamera makeDefault position={[0, 0, 15]} />
 
+                        <ambientLight intensity={1} />
+                        <directionalLight position={[10, 10, 10]} intensity={0.5} />
 
-                    {/* ✅ Correct light usage */}
-                    <ambientLight intensity={1} />
-                    <directionalLight position={[10, 10, 10]} intensity={0.5} />
-                <HeroCamera isMobile={isMobile}>
-                    <GamingRoom
-                        scale={0.15}
-                        rotation={[0, 0, 0]}
-                        position={sizes.deskPosition}
-                    />
-                    {/*<LaptopHacker*/}
-                    {/*    scale={sizes.deskScale}*/}
-                    {/*    rotation={[0, -Math.PI/2, 0]}*/}
-                    {/*    position={sizes.deskPosition}*/}
-                    {/*/>*/}
-                    {/*<HackerRoom*/}
-                    {/*    scale={sizes.deskScale}*/}
-                    {/*    rotation={[0, -Math.PI, 0]}*/}
-                    {/*    position={sizes.deskPosition}*/}
-                    {/*/>*/}
-                </HeroCamera>
-                    <group>
-                        <Target position={sizes.targetPosition} />
-                        <ReactLogo position={sizes.reactLogoPosition} />
-                        <Rings position={sizes.ringPosition} />
-                        <Cube position={sizes.cubePosition} />
-                        <ReactL position={sizes.reactLPosition} />
-                    </group>
-                </Suspense>
-            </Canvas>
+                        <HeroCamera isMobile={isMobile}>
+                            <GamingRoom
+                                scale={isSmall ? 0.1 : isMobile ? 0.12 : 0.15}
+                                rotation={[0, 0, 0]}
+                                position={sizes.deskPosition}
+                            />
+                            {/*<LaptopHacker*/}
+                            {/*    scale={sizes.deskScale}*/}
+                            {/*    rotation={[0, -Math.PI/2, 0]}*/}
+                            {/*    position={sizes.deskPosition}*/}
+                            {/*/>*/}
+                            {/*<HackerRoom*/}
+                            {/*    scale={sizes.deskScale}*/}
+                            {/*    rotation={[0, -Math.PI, 0]}*/}
+                            {/*    position={sizes.deskPosition}*/}
+                            {/*/>*/}
+                        </HeroCamera>
+                        <group>
+                            <Target position={sizes.targetPosition} />
+                            <ReactLogo position={sizes.reactLogoPosition} />
+                            <Rings position={sizes.ringPosition} />
+                            <Cube position={sizes.cubePosition} />
+                            <ReactL position={sizes.reactLPosition} />
+                        </group>
+                    </Suspense>
+                </Canvas>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 w-full z-10 c-space">

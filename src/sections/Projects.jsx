@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
@@ -8,6 +9,9 @@ import { myProjects } from '../constants/index.js';
 import CanvasLoader from '../components/Loading.jsx';
 import DemoComputer from '../components/DemoComputer.jsx';
 import DemoComputerCustom from "../components/DemoComputerCustom.jsx";
+import { useInView } from '../hooks/useAnimations.js';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projectCount = myProjects.length;
 
@@ -88,8 +92,8 @@ const Projects = () => {
                         <directionalLight position={[10, 10, 5]} />
                         <Center>
                             <Suspense fallback={<CanvasLoader />}>
-                                <group scale={2}  position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
-                                    <DemoComputer texture={currentProject.texture}/>
+                                <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
+                                    <DemoComputer texture={currentProject.texture} />
                                 </group>
                             </Suspense>
                         </Center>
