@@ -31,7 +31,7 @@ const ThemeLanguageToggle = () => {
             >
                 {/* Background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/40 to-orange-500/40 
-                              dark:from-blue-500/40 dark:to-purple-600/40 transition-all duration-500"></div>
+                              dark:from-blue-600/40 dark:to-indigo-700/40 transition-all duration-500"></div>
 
                 {/* Icon */}
                 <div className="relative z-10 flex items-center justify-center h-full">
@@ -63,8 +63,8 @@ const ThemeLanguageToggle = () => {
                 style={{ zIndex: 99999 }}
             >
                 {/* Background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-400/40 to-blue-500/40 
-                              dark:from-purple-500/40 dark:to-pink-600/40 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-400/40 to-blue-500/40 
+                              dark:from-indigo-500/40 dark:to-blue-700/40 transition-all duration-500"></div>
 
                 {/* Language Text */}
                 <div className="relative z-10 flex items-center justify-center h-full">
