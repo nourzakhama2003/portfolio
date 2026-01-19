@@ -3,6 +3,7 @@ import Navbar from "./sections/Navbar.jsx";
 import Hero from "./sections/Hero.jsx";
 import About from "./sections/About.jsx";
 import Projects from "./sections/Projects.jsx";
+import Skills from "./sections/Skills.jsx";
 import Clients from "./components/Clients.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
@@ -17,13 +18,14 @@ const App = () => {
     return (
         <ThemeProvider>
             <LanguageProvider>
-                <main className="w-full mx-auto transition-colors duration-500 
-                               bg-black-100 dark:bg-black-100 
+                <main className="w-full mx-auto transition-colors duration-500
+                               bg-black-100 dark:bg-black-100
                                light:bg-gray-50 light:text-gray-900">
                     <ThemeLanguageToggle />
                     <Navbar />
                     <Hero />
                     <About />
+                    <Skills />
                     <StatsSection />
                     <Projects />
                     <Experiences />

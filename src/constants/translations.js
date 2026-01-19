@@ -72,23 +72,23 @@ export const translations = {
 
         // Work Experiences
         workExperiences: {
-            groupFoodOrdering: {
-                name: "Group Food Ordering Platform",
-                pos: "Full Stack Developer",
-                duration: "2024",
-                title: "Built with Angular & Spring Boot, this platform enables users to create group food orders, join as participants, and track real-time countdowns until deadlines. Implemented Keycloak for authentication and secure role-based access."
+            platana: {
+                name: "Platana - Real-time Group Ordering",
+                pos: "Fullstack Developer",
+                duration: "July – Aug 2025",
+                title: "Developed a real-time group ordering system using Angular, Spring Boot, MongoDB, and Keycloak. Implemented map localization and real-time tracking features."
             },
-            ecommerceMern: {
-                name: "E-Commerce Platform (MERN)",
-                pos: "Full Stack Developer",
-                duration: "2023",
-                title: "Developed a multi-vendor e-commerce app using the MERN stack. Allowed users to create their own shops, add/manage products, and handle orders. Integrated JWT & bcrypt for secure authentication."
+            codeveda: {
+                name: "Codeveda - E-commerce Marketplace",
+                pos: "Fullstack Developer",
+                duration: "June – July 2025",
+                title: "Built a seller-driven marketplace allowing users to create shops. Utilized MERN stack and JWT for secure authentication."
             },
-            eventManagement: {
-                name: "Event Management App",
-                pos: "Full Stack Developer",
-                duration: "2022",
-                title: "Built with Next.js and Spring Boot, this platform helps users create, manage, and participate in events. Implemented event registration, ticketing, and email notifications with a clean UI and scalable backend."
+            hospital: {
+                name: "Hôpital Fatouma Bourguiba",
+                pos: "Fullstack Developer",
+                duration: "May – June 2024",
+                title: "Automated administrative processes using PHP/MySQL, improving efficiency in hospital management tasks."
             }
         },
 
@@ -234,23 +234,23 @@ export const translations = {
 
         // Work Experiences
         workExperiences: {
-            groupFoodOrdering: {
-                name: "Plateforme de Commande de Groupe",
-                pos: "Développeur Full Stack",
-                duration: "2024",
-                title: "Construite avec Angular & Spring Boot, cette plateforme permet aux utilisateurs de créer des commandes de groupe, de participer et de suivre les comptes à rebours en temps réel jusqu'aux échéances. Implémentation de Keycloak pour l'authentification et l'accès sécurisé basé sur les rôles."
+            platana: {
+                name: "Platana - Commande groupée temps réel",
+                pos: "Développeur Fullstack",
+                duration: "Juil – Août 2025",
+                title: "Développement d'un système de commande groupée avec Angular, Spring Boot, MongoDB et Keycloak. Localisation de cartes et suivi temps réel."
             },
-            ecommerceMern: {
-                name: "Plateforme E-Commerce (MERN)",
-                pos: "Développeur Full Stack",
-                duration: "2023",
-                title: "Développement d'une application e-commerce multi-vendeurs utilisant la stack MERN. Permettant aux utilisateurs de créer leurs propres boutiques, d'ajouter/gérer des produits et de traiter les commandes. Intégration de JWT & bcrypt pour une authentification sécurisée."
+            codeveda: {
+                name: "Codeveda - Marketplace e-commerce",
+                pos: "Développeur Fullstack",
+                duration: "Juin – Juil 2025",
+                title: "Création d'une marketplace vendeurs avec gestion de boutiques. Stack MERN et authentification sécurisée JWT."
             },
-            eventManagement: {
-                name: "Application de Gestion d'Événements",
-                pos: "Développeur Full Stack",
-                duration: "2022",
-                title: "Construite avec Next.js et Spring Boot, cette plateforme aide les utilisateurs à créer, gérer et participer à des événements. Implémentation d'inscription aux événements, billetterie et notifications par email avec une interface utilisateur propre et un backend évolutif."
+            hospital: {
+                name: "Hôpital Fatouma Bourguiba",
+                pos: "Développeur Fullstack",
+                duration: "Mai – Juin 2024",
+                title: "Automatisation administrative via PHP/MySQL, améliorant l'efficacité de la gestion hospitalière."
             }
         },
 

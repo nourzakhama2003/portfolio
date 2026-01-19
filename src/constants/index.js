@@ -138,32 +138,72 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
 export const workExperiences = [
     {
         id: 1,
-        name: 'Group Food Ordering Platform',
-        pos: 'Full Stack Developer',
-        duration: '2024',
-        title:
-            "Built with Angular & Spring Boot, this platform enables users to create group food orders, join as participants, and track real-time countdowns until deadlines. Implemented Keycloak for authentication and secure role-based access.",
-        icon: '/assets/angular.svg', // 👉 replace with a logo (Angular+Spring)
+        name: 'Platana',
+        pos: 'Fullstack Developer',
+        duration: '2025',
+        title: "Developed a real-time group ordering system using Angular, Spring Boot, MongoDB, and Keycloak. Implemented map localization and real-time tracking features.",
+        icon: '/assets/angular.svg',
         animation: 'victory',
     },
     {
         id: 2,
-        name: 'E-Commerce Platform (MERN)',
-        pos: 'Full Stack Developer',
-        duration: '2023',
-        title:
-            "Developed a multi-vendor e-commerce app using the MERN stack. Allowed users to create their own shops, add/manage products, and handle orders. Integrated JWT & bcrypt for secure authentication.",
-        icon: '/assets/react.svg', // 👉 replace with MERN logo
+        name: 'Codeveda',
+        pos: 'Fullstack Developer',
+        duration: '2025',
+        title: "Built a seller-driven marketplace allowing users to create shops. Utilized MERN stack and JWT for secure authentication.",
+        icon: '/assets/react.svg',
         animation: 'clapping',
     },
     {
         id: 3,
-        name: 'Event Management App',
-        pos: 'Full Stack Developer',
-        duration: '2022',
-        title:
-            "Built with Next.js and Spring Boot, this platform helps users create, manage, and participate in events. Implemented event registration, ticketing, and email notifications with a clean UI and scalable backend.",
-        icon: '/assets/nextjs.svg', // 👉 replace with Next.js/Spring logo
+        name: 'Hôpital Fatouma Bourguiba',
+        pos: 'Fullstack Developer',
+        duration: '2024',
+        title: "Automated administrative processes using PHP/MySQL, improving efficiency in hospital management tasks.",
+        icon: '/assets/php.svg',
         animation: 'salute',
     },
+];
+
+export const mySkills = [
+    {
+        category: "Full-Stack",
+        items: [
+            { name: "Angular", icon: "/assets/angular.svg" },
+            { name: "Spring Boot", icon: "/assets/spring.webp" },
+            { name: "Java", icon: "/assets/java.png" },
+            { name: "TypeScript", icon: "/assets/typescript.png" },
+            { name: "Python", icon: "/assets/python.png" },
+            { name: "LangChain", icon: "/assets/langchain.png" }
+        ]
+    },
+    {
+        category: "DevOps & DevSecOps",
+        items: [
+            { name: "Docker", icon: "/assets/docker.png" },
+            { name: "Ansible", icon: "/assets/ansible.png" },
+            { name: "GitHub Actions", icon: "/assets/github.svg" },
+            { name: "SonarQube", icon: "/assets/sonarqube.png" },
+            { name: "Kubernetes", icon: "/assets/kubernetes.png" },
+            { name: "Grafana", icon: "/assets/grafana.png" }
+        ]
+    },
+    {
+        category: "IA & Vision",
+        items: [
+            { name: "OpenCV", icon: "/assets/opencv.png" },
+            { name: "TensorFlow", icon: "/assets/tensorflow.png" },
+            { name: "Face Rec.", icon: "/assets/facerec.png" },
+            { name: "PyTorch", icon: "/assets/pytorch.png" }
+        ]
+    },
+    {
+        category: "BD & Sécurité",
+        items: [
+            { name: "PostgreSQL", icon: "/assets/postgresql.png" },
+            { name: "MongoDB", icon: "/assets/mongodb.png" },
+            { name: "Keycloak", icon: "/assets/keycloak.png" },
+            { name: "JWT", icon: "/assets/jwt.png" }
+        ]
+    }
 ];
